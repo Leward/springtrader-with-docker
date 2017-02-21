@@ -11,11 +11,15 @@ services:
     build: ./springtrader-portfolio
     ports:
       - "8081:8081"
+  quotes-db:
+    image: mongo:3.0
   quotes:
     image: leward/springtrader-quotes
     build: springtrader-quotes
     ports:
       - "8086:8086"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://quotes-db
   web:
     image: leward/springtrader-web
     build: springtrader-web
