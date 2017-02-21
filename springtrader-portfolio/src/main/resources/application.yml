@@ -1,0 +1,37 @@
+spring:
+  profiles.active: local
+  application:
+     name: portfolio
+
+logging:
+  level:
+    io.pivotal.springtrader: 'INFO'
+
+---
+spring:
+  profiles: local
+
+  jpa:
+     hibernate:
+        ddl-auto: create-drop
+server:
+  port: 8081
+
+quotes:
+  url: http://localhost:8086
+
+accounts:
+  url: http://localhost:8082
+
+---
+spring:
+  profiles: cloud
+  jpa:
+     hibernate:
+        ddl-auto: update
+quotes:
+  url: http://quotes-xxxx-yyyy.cfapps.pez.pivotal.io
+
+accounts:
+  url: http://accounts-xxxx-yyyy.cfapps.pez.pivotal.io
+  

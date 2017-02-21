@@ -1,0 +1,10 @@
+server.port: 8082
+
+security.basic.enabled: false
+spring.jpa:
+    hibernate.ddl-auto: create
+
+logging:
+  level:
+    io.pivotal.springtrader: 'INFO'
+    

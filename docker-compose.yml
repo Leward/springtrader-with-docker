@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  accounts:
+    image: leward/springtrader-accounts
+    build: ./springtrader-accounts
+    ports:
+      - "8082:8082"
+  portfolio:
+    image: leward/springtrader-portfolio
+    build: ./springtrader-portfolio
+    ports:
+      - "8081:8081"
+  quotes:
+    image: leward/springtrader-quotes
+    build: springtrader-quotes
+    ports:
+      - "8086:8086"
+  web:
+    image: leward/springtrader-web
+    build: springtrader-web
+    environment:
+      QUOTES_URL: http://quotes:8086
+      ACCOUNTS_URL: http://accounts:8082
+      PORTFOLIOS_URL: http://portfolio:8081
+    ports:
+      - "8080:8080"
